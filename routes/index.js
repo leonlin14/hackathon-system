@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 //var cards = require('../data/cards.json');
 var members = require('../data/members.json');
 var router = express.Router();
@@ -70,6 +71,24 @@ router.get('/cardreader', function(req, res) {
 			token: token
 		});
 	});
+});
+
+router.post('/opencard', function(req, res) {
+	request.post({
+		url: 'http://localhost:3001/opencard',
+		json: true,
+		body: {
+			email: req.body.email,
+			cardno: req.body.cardno,
+			token: req.body.token
+		}
+	}, function(error, response, body) {
+		if (!error && response.statusCode == 200) {
+			res.json({});
+		}
+	});
+
+
 });
 
 module.exports = router;
