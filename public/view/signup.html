@@ -21,7 +21,8 @@
                     <div class="btn btn-default" ng-click="submit(idno)">Submit</div>
                 </form>
 
-                <h1 ng-show="data">請放空白卡片</h1>
+                <h1 ng-show="data == 'success'">請放空白卡片</h1>
+                <h1 ng-show="data == 'savedCard'">開卡成功</h1>
                 <h1 ng-show="error">查不到編號</h1>
             </div>
         </div>
