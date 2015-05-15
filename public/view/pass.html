@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hackathon Taiwan</title>
+    <link rel="icon" href="img/asset/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pass.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/animate.css" />
+</head>
+<body>
+    <div ng-app="passCard">
+        <div class="container" ng-controller="PassControl">
+            <img class="animated rubberBand" src="../images/logo-white.png" alt="" />
+            <div ng-show="cardno">
+                <h2>no. {{ cardno }}</h2>
+                <h1>{ {{ name }} }</h1>
+                <h1>Welcome</h1>
+            </div>
+            <div ng-show="!cardno">
+                <br />
+                <h1>{ 查無此人 }</h1>
+            </div>
+
+            <div class="content">
+                <svg viewBox="0 0 600 230">
+                    <!-- Symbol with text -->
+                    <symbol id="s-text">
+                        <text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text--line">
+                            {{ message() }}
+                        </text>
+                    </symbol>
+
+                    <!-- Clippath  with text -->
+                    <clippath id="cp-text">
+                        <text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text--line">
+                            {{ message() }}
+                        </text>
+                    </clippath>
+
+                    <!-- Group for shadow -->
+                    <g clip-path="url(#cp-text)" class="shadow">
+                        <rect width="100%" height="100%" class="anim-shape anim-shape--shadow"></rect>
+                    </g>
+
+                    <!-- Group with clippath for text-->
+                    <g clip-path="url(#cp-text)" class="colortext">
+                        <!-- Animated shapes inside text -->
+                        <rect width="100%" height="100%" class="anim-shape"></rect>
+                        <rect width="80%" height="100%" class="anim-shape"></rect>
+                        <rect width="60%" height="100%" class="anim-shape"></rect>
+                        <rect width="40%" height="100%" class="anim-shape"></rect>
+                        <rect width="20%" height="100%" class="anim-shape"></rect>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+
+    <script src="../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../vendor/angular/angular.min.js"></script>
+
+    <script src="../javascripts/passCard.js"></script>
+</body>
+
+</html>
